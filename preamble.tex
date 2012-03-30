@@ -1,0 +1,115 @@
+\documentclass[10pt,a4paper]{report}
+\usepackage[latin1]{inputenc}
+\usepackage[english]{babel}
+%\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{multirow}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{subfig}
+\usepackage{titlesec}
+\usepackage{todonotes}
+\usepackage{pdfpages}										% include pdf-doc with the command (page number) \includepdf[pages=]{fil.pdf}	
+\usepackage{url}													% Til at sætte urler op med. Virker sammen med hyperref
+
+\flushbottom  %makes all pages equal size
+
+
+% ¤¤ Visuelle referencer ¤¤ %
+\usepackage{hyperref}			 		% Giver mulighed for at ens referencer bliver til klikbare hyperlinks. .. [colorlinks]{..}
+%\usepackage[hypertex]{hyperref}			 	% Giver mulighed for at ens referencer bliver til klikbare hyperlinks. .. [colorlinks]{..}
+\hypersetup{linkbordercolor=cyan}
+
+\hypersetup{pdfborder = 0}							% Fjerner ramme omkring links i fx indholsfotegnelsen og ved kildehenvisninger ¤¤
+\hypersetup{														%	Opsætning af hyperlinks
+    colorlinks = false,
+    linkcolor = black,
+    anchorcolor = black,
+    citecolor = black
+}
+
+
+%Code
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{light-gray}{gray}{0.90}
+
+\usepackage{color}
+\usepackage{listings}
+
+\lstset{ %
+  basicstyle=\scriptsize\ttfamily,       % the size of the fonts that are used for the code
+  numbers=left,                   % where to put the line-numbers
+  numberstyle=\scriptsize\tiny\color{gray},  % the style that is used for the line-numbers
+  stepnumber=1,                   % the step between two line-numbers. If it's 1, each line 
+                                  % will be numbered
+  numbersep=5pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{light-gray},      % choose the background color. You must add \usepackage{color}
+  showspaces=false,               % show spaces adding particular underscores
+  showstringspaces=false,         % underline spaces within strings
+  showtabs=false,                 % show tabs within strings adding particular underscores
+  frame=single,                   % adds a frame around the code
+  rulecolor=\color{black},        % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. commens (green here))
+  tabsize=2,                      % sets default tabsize to 2 spaces
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+  title=\lstname,                   % show the filename of files included with \lstinputlisting;
+                                  % also try caption instead of title
+  keywordstyle=\color{blue},          % keyword style
+  commentstyle=\color{dkgreen},       % comment style
+  stringstyle=\color{mauve},         % string literal style
+  escapeinside={\%*}{*)},            % if you want to add a comment within your code
+  morekeywords={*,...}               % if you want to add more keywords to the set
+}
+
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+\oddsidemargin  -0.5cm
+\evensidemargin 0.0cm
+\textwidth      17.25cm
+\headheight     1.0cm
+\headsep		0.7cm
+\topmargin      -0.5cm
+\textheight		22.0cm
+
+\pagestyle{fancy}
+
+\renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}}
+
+
+
+
+\lhead{Section}
+\chead{Chapter}
+\rhead{\thepage\ of \pageref{LastPage}}
+
+\lfoot{Theis Christensen\\Paulo Fontes\\Dennis Madsen}
+\cfoot{Team3}
+\rfoot{\today}
+
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\titlespacing*{\chapter}{0pt}{-50pt}{20pt}
+\titleformat{\chapter}[display]{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+%\renewcommand \thechapter{\Roman{chapter}}
+
+\newcommand{\p}{\\[0.3cm]}
+\renewcommand*\thesection{\arabic{section}}
+
+
+
+\usepackage{amsmath}
+\numberwithin{equation}{section}	%reset equation counter in every section
+\numberwithin{figure}{section}		%reset figure counter in every section
+\numberwithin{table}{section}		%reset table counter in every section
