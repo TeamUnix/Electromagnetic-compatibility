@@ -1,11 +1,106 @@
 \chapter{Design}
-Description of how you expect your design can comply with existing laws (how the system and PCB has been designed to obtain EMC).
+\todo[inline]{Description of how you expect your design can comply with existing laws (how the system and PCB has been designed to obtain EMC).
 \\ Short description of which laws the system must comply to.
-\\ Description of reviews we've had with Per.
+\\ Description of reviews we've had with Per.}
 \section{Standards}
 European standards according to Electromagnetic compatibility is found on European Commission website \footnote{\url{http://ec.europa.eu/enterprise/policies/european-standards/harmonised-standards/electromagnetic-compatibility/index\_en.htm\#Note 2.3}}.
 The standard: \textit{EN 50412-2-1:2005} deals with: \textit{Power line communication apparatus and systems used in low-voltage installations in the frequency range 1.6 MHz to 30 MHz}. However, the power line is not to work on a low-voltage installation but in an isolated DC environment. Another reason why not to use this standard is its expire date: 01/04/2008. Instead of this standard a generic standard is used.
 
+\begin{figure}[H]
+	\begin{centering}
+		 \includegraphics[width=0.5\textwidth]{images/choose_hormonic_standard.png}
+		\caption{Choosing a relevant harmonic standard.}
+	\end{centering}
+\end{figure}
+\subsection{Schematic and first PCB layout}
+Full documentation of the schematic design can be found in the Appendix \textit{EPRO\_3\_\&\_4\_PLC - Hardware}. The design consists of two parts, a SMPS (switch mode power supply) and a PLC (power line communication) module. Both modules takes input from the power line (30VDC), where the PLC reads filters out the communication on top of the DC voltage and also sends commands to other modules on the DC. The SMPS converts the 30VDC input to a 5VDC supply that can be used to power the Processor board and the FPGA board used in the project (PRO4). The PCB has been divided in two sections with the 30VDC connection in between the two modules two have as little interference as possible.
+\begin{figure}[H]
+	\begin{centering}
+		 \includegraphics[width=0.5\textwidth]{images/pcb_design.pdf}
+		\caption{Overview of how the board is divided.}
+	\end{centering}
+\end{figure}
+
+\subsubsection{Schematic}
+The schematic has only changed slightly during the different versions of the circuit board. Down below the newest version of the schematic is shown (the schematic that fits to the PCB shown in review 2).
+\begin{figure}[H]
+	\begin{centering}
+		 \includegraphics[width=0.85\textwidth,page=2,angle=0]{images/SIG60_v0_4}
+		\caption{Communication part of the design.}
+	\end{centering}
+\end{figure}
+
+\begin{figure}[H]
+	\begin{centering}
+		 \includegraphics[width=0.85\textwidth,page=1,angle=0]{images/SIG60_v0_4}
+		\caption{Power supply section of the design.}
+	\end{centering}
+\end{figure}
 
 \subsection{Review 1}
+The first PCB layout was made before attending the EMC course in the start of February 2012, where feedback for the design was given. Basically two things should be changed:
+\begin{itemize}
+	\item Shorten tracks on bottom side, so a clean ground plane is held. 
+	\item Enlarge track width (especially power tracks).
+\end{itemize}
+
+\begin{figure}[H]
+	\begin{centering}
+		 \includegraphics[width=0.6\textwidth,page=3,angle=0]{images/SIG60_v0_1}
+		\caption{First routing of the circuit-board.}
+	\end{centering}
+\end{figure}
+
 \subsection{Review 2}
+In the second layout all track widths were adjusted, track length shortened and the amount of long tracks on the ground plane minimized. The only remark for this design was one of the tracks on the ground plane at twice the length of the other tracks. A PCB was made with this design as the remark was not critical and a redesign would require quiet some work.
+\\Note that the free space on the PCB was connected to ground on both planes. 
+\begin{figure}[H]
+	\begin{centering}
+		 \includegraphics[width=0.6\textwidth,page=3,angle=0]{images/SIG60_v0_2}
+		\caption{First redesign of the PCB layout.}
+	\end{centering}
+\end{figure}
+\subsubsection{Testing the PCB}
+Testing of the first PCB is documented in the Appendix \textit{EPRO\_3\_\&\_4\_PLC - Hardware}. A short resume:
+\begin{itemize}
+	\item The output of the switch mode was unstable when loaded. 
+	\begin{itemize}
+		\item The feedback track shall be made shorter and with a more width track. 
+		\item Generally all component shall be placed closer to the switch mode device to shorten track lengths. 
+		\item More vias for better connection to the ground plane, if it is possible, one or more should be placed underneath the switch mode device.
+	\end{itemize}
+	\item When noise was added to the power line, random characters appeared in the communication.
+	\begin{itemize}
+		\item A big resister has been added between the receive pin and ground.
+		\item Filters and crystal shall be placed as close as possible to the power line device to decrease the noise furthermore.
+	\end{itemize} 
+	\item The receive diode lightens up all the time.
+	\begin{itemize}
+		\item The diode shall use the RxOn pin on the Power Line device instead of the receive pin to fix the problem.
+	\end{itemize}
+\end{itemize}
+
+\subsection{Final design}
+%Reroute filters + Switch mode feedback.
+In the final layout, all components have been placed even closer to the different IC's. The board size has decreased approximately to 65\% of the first version. 
+%increased pad size
+%Placement of 30 volt plug
+
+% connections in the side of the PCB (except 30 volt)
+% Power Track size 60mil, 50mil to withstand 3Amp 
+
+
+\begin{figure}[H]
+	\begin{centering}
+		 \includegraphics[width=0.6\textwidth,page=3,angle=0]{images/SIG60_v0_4}
+		\caption{Second redesign of the PCB layout.}
+	\end{centering}
+\end{figure}
+
+\begin{figure}[H]
+	\begin{centering}
+		 \includegraphics[page=1,angle=90]{images/jens_print_4}
+		\caption{PCB layout, top and bottom}
+	\end{centering}
+\end{figure}
+
