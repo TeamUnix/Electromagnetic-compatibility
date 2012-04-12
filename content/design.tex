@@ -13,16 +13,17 @@ The standard: \textit{EN 50412-2-1:2005} deals with: \textit{Power line communic
 	\end{centering}
 \end{figure}
 \subsection{Schematic and first PCB layout}
-Full documentation of the schematic design can be found in the Appendix \textit{EPRO\_3\_\&\_4\_PLC - Hardware}. The design consists of two parts, a SMPS (switch mode power supply) and a PLC (power line communication) module. Both modules takes input from the power line (30VDC), where the PLC reads filters out the communication on top of the DC voltage and also sends commands to other modules on the DC. The SMPS converts the 30VDC input to a 5VDC supply that can be used to power the Processor board and the FPGA board used in the project (PRO4). The PCB has been divided in two sections with the 30VDC connection in between the two modules two have as little interference as possible.
+Full documentation of the schematic design can be found in the Appendix \textit{EPRO\_3\_\&\_4\_PLC - Hardware}. The design consists of two parts, a SMPS (switch mode power supply) and a PLC (power line communication) module. Both modules takes input from the power line (30VDC), where the PLC filters out the communication on top of the DC voltage and also sends commands to other modules on the DC. The SMPS converts the 30VDC input to a 5VDC supply that can be used to power the Processor board and the FPGA board used in the project (PRO4). The PCB has been divided in two sections with the 30VDC connection in between the two modules two have as little interference as possible.
 \begin{figure}[H]
 	\begin{centering}
 		 \includegraphics[width=0.5\textwidth]{images/pcb_design.pdf}
-		\caption{Overview of how the board is divided.}
+		\caption{Overview of how the board is divided (Setup of the final board).}
+		\label{fig:board_overview}
 	\end{centering}
 \end{figure}
 
 \subsubsection{Schematic}
-The schematic has only changed slightly during the different versions of the circuit board. Down below the newest version of the schematic is shown (the schematic that fits to the PCB shown in review 2).
+The schematic has only changed slightly during the different versions of the circuit board. Down below the newest version of the schematic is shown (the PCB that fits to the schematic is shown in review 2).
 \begin{figure}[H]
 	\begin{centering}
 		 \includegraphics[width=0.85\textwidth,page=2,angle=0]{images/SIG60_v0_4}
@@ -38,7 +39,7 @@ The schematic has only changed slightly during the different versions of the cir
 \end{figure}
 
 \subsection{Review 1}
-The first PCB layout was made before attending the EMC course in the start of February 2012, where feedback for the design was given. Basically two things should be changed:
+The first PCB layout was made before attending the EMC course in the start of February 2012. In the end of the course feedback for the design was given. Basically two things should be changed:
 \begin{itemize}
 	\item Shorten tracks on bottom side, so a clean ground plane is held. 
 	\item Enlarge track width (especially power tracks).
@@ -65,7 +66,7 @@ Testing of the first PCB is documented in the Appendix \textit{EPRO\_3\_\&\_4\_P
 \begin{itemize}
 	\item The output of the switch mode was unstable when loaded. 
 	\begin{itemize}
-		\item The feedback track shall be made shorter and with a more width track. 
+		\item The feedback track shall be made shorter and the width of it enlarged. 
 		\item Generally all component shall be placed closer to the switch mode device to shorten track lengths. 
 		\item More vias for better connection to the ground plane, if it is possible, one or more should be placed underneath the switch mode device.
 	\end{itemize}
@@ -82,7 +83,10 @@ Testing of the first PCB is documented in the Appendix \textit{EPRO\_3\_\&\_4\_P
 
 \subsection{Final design}
 %Reroute filters + Switch mode feedback.
-In the final layout, all components have been placed even closer to the different IC's. The board size has decreased approximately to 65\% of the first version. 
+In the final layout, all components have been placed even closer to the different IC's. The board size has decreased to approximately 65\% of the last version. 
+\\ To ease mounting, all vias and pads have been increased in size. As the pin-headers shall be soldered on both sides, the pads have also been shaped oblongly. Clearance between the tracks is defined to 15 mil as this distance can easily be made on homemade PCB's. 
+\\ The 5 volt output tracks should be able to withstand 3 amperes maximum, according to the book \textit{PCB Design Tutorial page 7} (see appendix), the track size shall be minimum 50mil. A width of 60 mil have been chosen. 
+\\ As it can be seen on fig: \ref{fig:board_overview} how the connectors on the board is placed. Usually it is preferable to have all connections in one side of a PCB (possible two). Although, to keep tracks as short as possible, and to place the shared item (30 Volt plug) a central place for both sides of the PCB, this rule have not been kept that strict.
 %increased pad size
 %Placement of 30 volt plug
 
@@ -92,10 +96,11 @@ In the final layout, all components have been placed even closer to the differen
 
 \begin{figure}[H]
 	\begin{centering}
-		 \includegraphics[width=0.6\textwidth,page=3,angle=0]{images/SIG60_v0_4}
+		 \includegraphics[width=0.55\textwidth,page=3,angle=0]{images/SIG60_v0_4}
 		\caption{Second redesign of the PCB layout.}
 	\end{centering}
 \end{figure}
+
 
 \begin{figure}[H]
 	\begin{centering}
@@ -104,3 +109,9 @@ In the final layout, all components have been placed even closer to the differen
 	\end{centering}
 \end{figure}
 
+\begin{figure}[H]
+	\begin{centering}
+		 \includegraphics[width=0.8\textwidth]{images/final_board.jpg}
+		\caption{Final PCB mounted with both switch mode supplies}
+	\end{centering}
+\end{figure}
