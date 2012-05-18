@@ -12,8 +12,11 @@ The standard: \textit{EN 50412-2-1:2005} deals with: \textit{Power line communic
 		\caption{Choosing a relevant harmonic standard.}
 	\end{centering}
 \end{figure}
+Basically there are two different generic standards both when talking immunity and emission. The standards are either residential or industrial. The definition of an industry is a place with its own transformer station. As the power line module can be used both places a mix is chosen, where the immunity test have to withstand the demands for industrial implementation and the emission have to withstand the demands for residential implementation. In the industry there is a high requirement for immunity of the devices and low requirement for emission. This is vice versa for the residential requirements. The standards used is:
+\\\textit{61000-6-2} for immunity (industrial requirements) and \textit{61000-6-3} for emission (residential requirements)
+
 \subsection{Schematic and first PCB layout}
-Full documentation of the schematic design can be found in the Appendix \textit{EPRO\_3\_\&\_4\_PLC - Hardware}. The design consists of two parts, a SMPS (switch mode power supply) and a PLC (power line communication) module. Both modules takes input from the power line (30VDC), where the PLC filters out the communication on top of the DC voltage and also sends commands to other modules on the DC. The SMPS converts the 30VDC input to a 5VDC supply that can be used to power the Processor board and the FPGA board used in the project (PRO4). The PCB has been divided in two sections with the 30VDC connection in between the two modules two have as little interference as possible.
+Full documentation of the schematic design can be found in the Appendix \textit{EPRO\_3\_\&\_4\_PLC - Hardware}. The design consists of two parts, a SMPS (switch mode power supply) and a PLC (power line communication) module. Both modules takes input from the power line (30VDC), where the PLC filters out the communication on top of the DC voltage and also sends commands to other modules on the DC. The SMPS converts the 30VDC input to a 5VDC supply that can be used to power the Processor board and the FPGA board used in the prfoject (PRO4). The PCB has been divided in two sections with the 30VDC connection in between the two modules to have as little interference as possible.
 \begin{figure}[H]
 	\begin{centering}
 		 \includegraphics[width=0.5\textwidth]{images/pcb_design.pdf}
@@ -86,7 +89,7 @@ Testing of the first PCB is documented in the Appendix \textit{EPRO\_3\_\&\_4\_P
 In the final layout, all components have been placed even closer to the different IC's. The board size has decreased to approximately 65\% of the last version. 
 \\ To ease mounting, all vias and pads have been increased in size. As the pin-headers shall be soldered on both sides, the pads have also been shaped oblongly. Clearance between the tracks is defined to 15 mil as this distance can easily be made on homemade PCB's. 
 \\ The 5 volt output tracks should be able to withstand 3 amperes maximum, according to the book \textit{PCB Design Tutorial page 7} (see appendix), the track size shall be minimum 50mil. A width of 60 mil have been chosen. 
-\\ As it can be seen on fig: \ref{fig:board_overview} how the connectors on the board is placed. Usually it is preferable to have all connections in one side of a PCB (possible two). Although, to keep tracks as short as possible, and to place the shared item (30 Volt plug) a central place for both sides of the PCB, this rule have not been kept that strict.
+\\ As it can be seen on fig: \ref{fig:board_overview} how the connectors on the board is placed. Usually it is preferable to have all connections in one side of a PCB (possible two). Although, to keep tracks as short as possible, and to place the shared item (30 Volt plug) a central place for both sides of the PCB, this rule has not been kept strict.
 %increased pad size
 %Placement of 30 volt plug
 
