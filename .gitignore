@@ -21,6 +21,7 @@
 *.out
 *.bbl
 *.blg
+*.pdf
 #
 
 #	VHDL
