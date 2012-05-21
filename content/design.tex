@@ -1,22 +1,25 @@
 \chapter{Design}
-\todo[inline]{Description of how you expect your design can comply with existing laws (how the system and PCB has been designed to obtain EMC).
-\\ Short description of which laws the system must comply to.
-\\ Description of reviews we've had with Per.}
+This chapter describes how the PCB has been designed in order to obtain EMC. The different laws used and reviews with supervisor \textit{Per Lysgaard} are also described. 
+
+%\todo[inline]{Description of how you expect your design can comply with existing laws (how the system and PCB has been designed to obtain EMC).\\ Short description of which laws the system must comply to.\\ Description of reviews we've had with Per.}
 \section{Standards}
-European standards according to Electromagnetic compatibility is found on European Commission website \footnote{\url{http://ec.europa.eu/enterprise/policies/european-standards/harmonised-standards/electromagnetic-compatibility/index\_en.htm\#Note 2.3}}.
+The different European standards according to Electromagnetic compatibility is found on the European Commission website \footnote{\url{http://ec.europa.eu/enterprise/policies/european-standards/harmonised-standards/electromagnetic-compatibility/index\_en.htm\#Note 2.3}}.
 The standard: \textit{EN 50412-2-1:2005} deals with: \textit{Power line communication apparatus and systems used in low-voltage installations in the frequency range 1.6 MHz to 30 MHz}. However, the power line is not to work on a low-voltage installation but in an isolated DC environment. Another reason why not to use this standard is its expire date: 01/04/2008. Instead of this standard a generic standard is used.
 
 \begin{figure}[H]
 	\begin{centering}
 		 \includegraphics[width=0.5\textwidth]{images/choose_hormonic_standard.png}
-		\caption{Choosing a relevant harmonic standard.}
+		\caption{Choosing a relevant generic standard.}
 	\end{centering}
 \end{figure}
-Basically there are two different generic standards both when talking immunity and emission. The standards are either residential or industrial. The definition of an industry is a place with its own transformer station. As the power line module can be used both places a mix is chosen, where the immunity test have to withstand the demands for industrial implementation and the emission have to withstand the demands for residential implementation. In the industry there is a high requirement for immunity of the devices and low requirement for emission. This is vice versa for the residential requirements. The standards used is:
-\\\textit{61000-6-2} for immunity (industrial requirements) and \textit{61000-6-3} for emission (residential requirements)
-
+Basically there are two different generic standards both when talking immunity and emission. The standards are either residential or industrial. The definition of an industry is a place with its own transformer station. As the power line module can be used both places a mix is chosen, where the immunity test have to withstand the demands for industrial implementation and the emission have to withstand the demands for residential implementation. In the industry there is a high requirement of immunity on the devices and low requirement for emission. This is vice versa for the residential requirements. The standards used is therefore:
+	\begin{itemize}
+		\item \textit{61000-6-2} for immunity (industrial requirements)
+		\item \textit{61000-6-3} for emission (residential requirements)
+	\end{itemize}
+The two standards describes what demands the equipment have to fulfill, how the tests should be done and how the measurements should be reported. 
 \subsection{Schematic and first PCB layout}
-Full documentation of the schematic design can be found in the Appendix \textit{EPRO\_3\_\&\_4\_PLC - Hardware}. The design consists of two parts, a SMPS (switch mode power supply) and a PLC (power line communication) module. Both modules takes input from the power line (30VDC), where the PLC filters out the communication on top of the DC voltage and also sends commands to other modules on the DC. The SMPS converts the 30VDC input to a 5VDC supply that can be used to power the Processor board and the FPGA board used in the prfoject (PRO4). The PCB has been divided in two sections with the 30VDC connection in between the two modules to have as little interference as possible.
+Full documentation of the schematic design can be found in the Appendix \textit{EPRO\_3\_\&\_4\_PLC - Hardware}. The design consists of two parts, a SMPS (switch mode power supply) and a PLC (power line communication) module. Both modules takes input from the power line (30VDC), where the Power Line part filters out the communication on top of the DC voltage and also sends commands to other modules on the net. The SMPS converts the 30VDC input to a 5VDC supply that can be used to power the Processor board and the FPGA board used in the project (PRO4). The PCB has been divided in two sections with the 30VDC connection in between the two modules to have as little interference as possible.
 \begin{figure}[H]
 	\begin{centering}
 		 \includegraphics[width=0.5\textwidth]{images/pcb_design.pdf}
@@ -57,7 +60,7 @@ The first PCB layout was made before attending the EMC course in the start of Fe
 
 \subsection{Review 2}
 In the second layout all track widths were adjusted, track length shortened and the amount of long tracks on the ground plane minimized. The only remark for this design was one of the tracks on the ground plane at twice the length of the other tracks. A PCB was made with this design as the remark was not critical and a redesign would require quiet some work.
-\\Note that the free space on the PCB was connected to ground on both planes. 
+\\\textit{Note: the free space on the PCB was connected to ground on both planes.}
 \begin{figure}[H]
 	\begin{centering}
 		 \includegraphics[width=0.6\textwidth,page=3,angle=0]{images/SIG60_v0_2}
@@ -100,7 +103,7 @@ In the final layout, all components have been placed even closer to the differen
 \begin{figure}[H]
 	\begin{centering}
 		 \includegraphics[width=0.55\textwidth,page=3,angle=0]{images/SIG60_v0_4}
-		\caption{Second redesign of the PCB layout.}
+		\caption{Final version of the PCB.}
 	\end{centering}
 \end{figure}
 
