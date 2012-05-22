@@ -57,8 +57,8 @@ Figure \ref{fig:spectrum_on} shows the maximum level emitted from the device. No
 	\end{centering}
 \end{figure}
 The values read in a TEM-Cell can only be used as guidelines as the offset can be up to 7 dB. This gives a worst case value of $ 46.37 dB\mu V/m$.
-\\\p According to table \ref{table:emission_standard}\footnote{Table from \textit{Grundleaggende EMC2 - page 73}}, the value measured is approximately $17dB\mu V/m$ higher than the upper limit value.
-
+\\\p According to table \ref{table:emission_standard_CABINET}\footnote{Table from \textit{Grundleaggende EMC2 - page 73}}, the value measured is approximately $17dB\mu V/m$ higher than the upper limit value.
+However, the values from table \ref{table:emission_standard_CABINET} is based on emission limits for cabinet ports. As the device is not mounted in a cabinet, table \ref{table:emission_standard_DC} \& \ref{table:emission_standard_SIGNAL} might be used instead as these describes the emission from the signal and DC ports which is not shielded in this case.
 \begin{table}[H]
 		\begin{center}
 		\begin{tabular}{|l|l|l|l|}\hline
@@ -75,13 +75,41 @@ The values read in a TEM-Cell can only be used as guidelines as the offset can b
 		\end{tabular}
 		\end{center}
 	\caption{Emission limit  values for cabinet-ports according to the EN 61000-6-3 standard.}
-	\label{table:emission_standard}
+	\label{table:emission_standard_CABINET}
+\end{table}
+
+\begin{table}[H]
+		\begin{center}
+		\begin{tabular}{|l|l|l|l|}\hline
+			Fenomena 	& Frequency-span & Limit & Basis standard\\\hline
+			Noise		& 0.15 - 0.5 MHz		& 79dB($\mu$V/m) quasi-peak		& CISPR 16-1-2	\\
+			~			& ~					& 66dB($\mu$V/m) average		& \& 16-2-1		\\\hline
+			Noise		& 0.5 - 30 MHz			& 73dB($\mu$V/m) quasi-peak		& CISPR 16-1-2	\\
+			~			& ~					& 60dB($\mu$V/m) average		& \& 16-2-1		\\\hline
+		\end{tabular}
+		\end{center}
+	\caption{Emission limit  values for DC power ports.}
+	\label{table:emission_standard_DC}
+\end{table}
+
+\begin{table}[H]
+		\begin{center}
+		\begin{tabular}{|l|l|l|l|}\hline
+			Fenomena 	& Frequency-span & Limit & Basis standard\\\hline
+			Noise		& 0.15 - 0.5 MHz		& 79-87dB($\mu$V/m) quasi-peak	& CISPR 22	\\
+			~ 			& ~					& 84-74dB($\mu$V/m) average	& ~		\\\hline
+			Noise		& 0.5 - 30 MHz			& 87dB($\mu$V/m) quasi-peak		& CISPR 22	\\
+			~ 			& ~					& 74dB($\mu$V/m) average		& 		\\\hline
+		\end{tabular}
+		\end{center}
+	\caption{Emission limit  values for signal power ports.}
+	\label{table:emission_standard_SIGNAL}
 \end{table}
 
 In section \ref{sec:design_optimization} (Design Optimization) different suggestions to improving EMC are discussed.
 
 \section{Immunity test}
-Down below different test cases are described, which the product has to fulfill in order to be EMC proved and get the CE mark. None of the tests are however performed as the immunity test equipment for the LF magnetic field immunity test and the HF irradiation test is non functional at the time and as the device is a prototype board the ESD and burst / energy transients are not performed. The two last test are not perfumed as these are meant for a finish product in its housing where the different connectors are stressed in order to verify its immunity. 
+Down below different test cases are described, which the product has to fulfill in order to be EMC proved and get the CE mark. None of the tests are however performed as the immunity test equipment for the LF magnetic field immunity test and the HF irradiation test is non functional at the time and as the device is a prototype board the ESD and burst / energy transients are not performed. The two last test are not performed as these are meant for a finish product in its housing where the different connectors are stressed in order to verify its immunity. 
 
 \subsection{LF magnetic field immunity \& HF irradiation}
 In this section is shortly described how the immunity test for the device shall be performed.
@@ -91,7 +119,7 @@ In this section is shortly described how the immunity test for the device shall 
 		\begin{center}
 		\begin{tabular}{|l|l|l|l|}\hline
 			Fenomena 		& Test requirements		& Basis standard 	& Fail criterium	\\\hline
-			Radiofrekvent		& 0,15 - 80 MHz		& 				& 			\\
+			Radiofrekvent		& 0.15 - 80 MHz		& 				& 			\\
 							&					&				&			\\
 			CM coubling		& 10 V				& EN 61000-4-6	& A			\\
 							&					&				&			\\
