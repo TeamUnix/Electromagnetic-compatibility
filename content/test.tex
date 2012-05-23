@@ -112,7 +112,7 @@ In section \ref{sec:design_optimization} (Design Optimization) different suggest
 Down below different test cases are described, which the product has to fulfill in order to be EMC proved and get the CE mark. None of the tests are however performed as the immunity test equipment for the LF magnetic field immunity test and the HF irradiation test is non functional at the time and as the device is a prototype board the ESD and burst / energy transients are not performed. The two last test are not performed as these are meant for a finish product in its housing where the different connectors are stressed in order to verify its immunity. 
 
 \subsection{LF magnetic field immunity \& HF irradiation}
-In this section is shortly described how the immunity test for the device shall be performed.
+In this section it is shortly described how the immunity test for the device shall be performed.
 \p The setup for immunity test is equal to the one for emission (see fig: \ref{fig:emission_setup}). During the test the equipment have to fulfill criteria \\A: The equipment have to operate normally during and after the test. \\ By this criteria is in this case meant that the communication have to continue during the test (transmit and receive) and the output voltage have to be kept stabile at its 5 volt level.
 
 \begin{table}[H]
@@ -127,8 +127,9 @@ In this section is shortly described how the immunity test for the device shall 
 		\end{tabular}
 		\end{center}
 	\caption{Immunity: signal ports and DC power ports}
+	\label{tab:signal_dc_power}
 \end{table}
-
+Table \ref{tab:signal_dc_power} shows the field and irradiation values the device shall be able to withstand. 
 \subsection{Electrostatic discharge}
 Not tested as the board is only in prototype state.
 
@@ -138,12 +139,13 @@ Not tested as the board is only in prototype state.
 \section{Design optimization}\label{sec:design_optimization}
 As the radiation test did not fulfill the requirements given according to the standard EN 61000-6-2, some improvements have to be made. Different solutions to decrease the noise emitted by the device will be discussed here.
 \p An easy fix is to mount the board inside a shielded housing to improve EMC. The board will most likely still have some emission because of the different connector holes.
-\p Another more systematical approach will be to use a small antenna (probe ground connected to probe input to) connected to an oscilloscope to find hotspots components and track on the board which emits the most. At the different hotspots some different approaches can be taken:
+\p Another more systematical approach will be to use a small antenna (probe ground connected to probe input) connected to an oscilloscope to find hotspots components and track on the board which emits the most. At the different hotspots some different approaches can be taken:
 \begin{itemize}
 	\item Decoupling capacitors.
 	\item Analog lowpass filters.
 	\item Local shielding.
-	\item Re-routing twisted tracs	
+	\item Re-routing twisted tracs.
+	\item Expand ground plane.
 \end{itemize} 
 
 
